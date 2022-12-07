@@ -12,12 +12,15 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.topquiz2.R;
+import com.example.topquiz2.model.User;
 
 public class MainActivity extends AppCompatActivity {
 // declaration des variables pour interagir avec les élements
     private TextView mGreetingTextView;
     private EditText mNameEditText;
     private Button mPlayButton;
+    //crée un attribut de type User
+    User mUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,8 +31,12 @@ public class MainActivity extends AppCompatActivity {
         mNameEditText = findViewById(R.id.main_edittext_name);
         mPlayButton = findViewById(R.id.main_button_play);
 
+
+
+
         //déactive le bouton
         mPlayButton.setEnabled(false);
+
         //être notifier quand l'utilisateur tape du texte
         mNameEditText.addTextChangedListener(new TextWatcher() {
             @Override
@@ -58,6 +65,8 @@ public class MainActivity extends AppCompatActivity {
                 Intent gameActivityIntent = new Intent(MainActivity.this, GameActivity.class);
                 //ce qu'il permet de démarrer la nouvelle activité (startActivity)
                 startActivity(gameActivityIntent);
+
+                mUser.setFirstName(mNameEditText.getText().toString());
             }
         });
     }
