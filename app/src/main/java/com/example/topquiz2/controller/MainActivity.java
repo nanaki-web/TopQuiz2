@@ -19,8 +19,8 @@ public class MainActivity extends AppCompatActivity {
     private TextView mGreetingTextView;
     private EditText mNameEditText;
     private Button mPlayButton;
-    //crée un attribut de type User
-    User mUser;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +31,9 @@ public class MainActivity extends AppCompatActivity {
         mNameEditText = findViewById(R.id.main_edittext_name);
         mPlayButton = findViewById(R.id.main_button_play);
 
-
+        //crée un attribut de type User et initialise(en fonction de la classe User)
+        //sert à créer un User
+        User mUser = new User();
 
 
         //déactive le bouton
@@ -66,6 +68,7 @@ public class MainActivity extends AppCompatActivity {
                 //ce qu'il permet de démarrer la nouvelle activité (startActivity)
                 startActivity(gameActivityIntent);
 
+                //mémorisez le prénom du joueur lorsqu'il clique sur le bouton
                 mUser.setFirstName(mNameEditText.getText().toString());
             }
         });
