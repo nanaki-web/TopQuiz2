@@ -1,4 +1,4 @@
-package com.example.topquiz2;
+package com.example.topquiz2.controller;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -10,6 +10,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import com.example.topquiz2.R;
 
 public class MainActivity extends AppCompatActivity {
 // declaration des variables pour interagir avec les élements
