@@ -2,6 +2,7 @@ package com.example.topquiz2;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -50,7 +51,11 @@ public class MainActivity extends AppCompatActivity {
         mPlayButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+               // au clique ,on démarre la seconde activity . on crée l'objet Intent avec ses deux paramétres.
+                //Les Intents permettent de lancer de nouvelles Activity grâce à la méthode startActivity().
+                Intent gameActivityIntent = new Intent(MainActivity.this, GameActivity.class);
+                //ce qu'il permet de démarrer la nouvelle activité (startActivity)
+                startActivity(gameActivityIntent);
             }
         });
     }
