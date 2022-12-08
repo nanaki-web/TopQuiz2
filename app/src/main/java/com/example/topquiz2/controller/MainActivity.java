@@ -1,5 +1,6 @@
 package com.example.topquiz2.controller;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -19,8 +20,18 @@ public class MainActivity extends AppCompatActivity {
     private TextView mGreetingTextView;
     private EditText mNameEditText;
     private Button mPlayButton;
+    private static final int GAME_ACTIVITY_REQUEST_CODE = 42; //doit etre unique, définir l'identifiant de la GameActivity
 
+    //recupération du resultat du score
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (GAME_ACTIVITY_REQUEST_CODE == requestCode && RESULT_OK == resultCode) {
+            // Fetch the score from the Intent
+            int score = data.getIntExtra(GameActivity.BUNDLE_EXTRA_SCORE, 0);
+        }
 
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
                 //Les Intents permettent de lancer de nouvelles Activity grâce à la méthode startActivity().
                 Intent gameActivityIntent = new Intent(MainActivity.this, GameActivity.class);
                 //ce qu'il permet de démarrer la nouvelle activité (startActivity)
-                startActivity(gameActivityIntent);
+                startActivityForResult(gameActivityIntent,GAME_ACTIVITY_REQUEST_CODE);
 
                 //mémorisez le prénom du joueur lorsqu'il clique sur le bouton
                 mUser.setFirstName(mNameEditText.getText().toString());
